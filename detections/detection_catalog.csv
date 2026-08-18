@@ -1,0 +1,5 @@
+id,name,severity,mitre,logic,response
+DET-001,Failed Sign-in Burst,Medium,T1110 - Brute Force,8+ failed sign-ins for a user in 10 minutes,"Validate source IP/user, review MFA/device context, block/reset if malicious."
+DET-002,Success After Repeated Failures,High,T1110 / T1078,Successful sign-in within 30 minutes after 8+ failures from same user/IP,"Investigate account compromise, revoke sessions, reset credentials, review subsequent activity."
+DET-003,Unexpected Country Authentication,Medium,T1078 - Valid Accounts,Authentication outside example expected-country allow-list,"Validate travel/VPN context and correlate with device, MFA and user behaviour."
+DET-004,Privileged Role Activity,High,T1098 - Account Manipulation,Administrative role/user changes in audit logs,Confirm change approval and investigate unauthorised privilege modification.
