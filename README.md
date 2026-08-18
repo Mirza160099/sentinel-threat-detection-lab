@@ -1,8 +1,9 @@
 # Microsoft Sentinel Threat Detection Lab
 
-A recruiter-facing cybersecurity portfolio project demonstrating **KQL threat hunting, detection engineering concepts, MITRE ATT&CK mapping and SOC incident triage** for Microsoft Sentinel-style identity telemetry.
 
-> **Important:** This is a portfolio lab using synthetic data. It does not contain MAS Tech/customer data and does not claim that these rules were deployed into an employer's production Sentinel tenant.
+## Demo Preview
+
+![Sentinel detection lab preview](assets/dashboard-preview.png)
 
 ## Objectives
 
