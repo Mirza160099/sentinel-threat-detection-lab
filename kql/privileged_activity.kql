@@ -1,0 +1,5 @@
+// Example privileged-role activity hunting query
+AuditLogs
+| where OperationName has_any ("Add member to role", "Add eligible member to role", "Update user")
+| project TimeGenerated, OperationName, InitiatedBy, TargetResources, Result
+| order by TimeGenerated desc

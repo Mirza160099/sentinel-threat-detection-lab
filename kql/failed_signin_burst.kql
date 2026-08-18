@@ -1,0 +1,6 @@
+// Detect users with repeated failed sign-ins in a short window
+SigninLogs
+| where ResultType != 0
+| summarize FailedAttempts=count(), IPs=make_set(IPAddress) by UserPrincipalName, bin(TimeGenerated, 10m)
+| where FailedAttempts >= 8
+| order by FailedAttempts desc

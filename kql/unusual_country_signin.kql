@@ -1,0 +1,6 @@
+// Portfolio heuristic: surface sign-ins from countries outside an example allow-list
+let ExpectedCountries = dynamic(["GB","IN"]);
+SigninLogs
+| where LocationDetails.countryOrRegion !in (ExpectedCountries)
+| summarize SignIns=count(), Users=dcount(UserPrincipalName) by LocationDetails.countryOrRegion, bin(TimeGenerated, 1h)
+| order by SignIns desc

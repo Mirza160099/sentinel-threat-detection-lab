@@ -1,0 +1,12 @@
+// Identify a successful authentication following a burst of failures
+let failures =
+SigninLogs
+| where ResultType != 0
+| summarize FailureCount=count(), FirstFailure=min(TimeGenerated), LastFailure=max(TimeGenerated)
+  by UserPrincipalName, IPAddress
+| where FailureCount >= 8;
+SigninLogs
+| where ResultType == 0
+| join kind=inner failures on UserPrincipalName, IPAddress
+| where TimeGenerated between (LastFailure .. LastFailure + 30m)
+| project TimeGenerated, UserPrincipalName, IPAddress, FailureCount, FirstFailure, LastFailure
